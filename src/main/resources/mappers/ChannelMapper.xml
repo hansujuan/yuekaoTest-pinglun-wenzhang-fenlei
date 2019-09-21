@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.bawei.cms.dao.ChannelMapper">
+<mapper namespace="com.hansujuan.cms.dao.ChannelMapper">
   
-  <resultMap id="BaseResultMap" type="com.bawei.cms.domain.Channel">
+  <resultMap id="BaseResultMap" type="com.hansujuan.cms.domain.Channel">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="description" jdbcType="VARCHAR" property="description" />
     <result column="icon" jdbcType="VARCHAR" property="icon" />
     <result column="sorted" jdbcType="INTEGER" property="sorted"/>
+    <collection property="categoryList" column="id" javaType="list" ofType="com.hansujuan.cms.domain.Category" select="com.hansujuan.cms.dao.CategoryMapper.selectByChannel"></collection>
   </resultMap>
   
   <sql id="Base_Column_List">
@@ -33,7 +34,7 @@
     delete from cms_channel where id = #{id,jdbcType=INTEGER}
   </delete>
  
-  <insert id="insert" parameterType="com.bawei.cms.domain.Channel">
+  <insert id="insert" parameterType="com.hansujuan.cms.domain.Channel">
     insert into cms_channel
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="name != null">
@@ -64,5 +65,7 @@
       </if>
     </trim>
   </insert>
-  
+  <update id="updateChannel" parameterType="com.hansujuan.cms.domain.Channel">
+  	update cms_channel set name=#{name} where id=#{id} 
+  </update>
 </mapper>

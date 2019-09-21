@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.bawei.cms.dao.CategoryMapper">
+<mapper namespace="com.hansujuan.cms.dao.CategoryMapper">
   
-  <resultMap id="BaseResultMap" type="com.bawei.cms.domain.Category">
+  <resultMap id="BaseResultMap" type="com.hansujuan.cms.domain.Category">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="sorted" jdbcType="INTEGER" property="sorted"/>
@@ -48,7 +48,7 @@
     delete from cms_category where id = #{id,jdbcType=INTEGER}
   </delete>
  
-  <insert id="insert" parameterType="com.bawei.cms.domain.Category">
+  <insert id="insert" parameterType="com.hansujuan.cms.domain.Category">
     insert into cms_category
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="name != null">
@@ -73,5 +73,7 @@
       </if>
     </trim>
   </insert>
+  
+ 
   
 </mapper>

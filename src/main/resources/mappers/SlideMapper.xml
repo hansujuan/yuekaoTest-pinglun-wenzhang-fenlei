@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.bawei.cms.dao.SlideMapper">
+<mapper namespace="com.hansujuan.cms.dao.SlideMapper">
   
-  <resultMap id="BaseResultMap" type="com.bawei.cms.domain.Slide">
+  <resultMap id="BaseResultMap" type="com.hansujuan.cms.domain.Slide">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="title" jdbcType="VARCHAR" property="title" />
     <result column="picture" jdbcType="VARCHAR" property="picture" />
@@ -40,7 +40,7 @@
     delete from cms_slide where id = #{id,jdbcType=INTEGER}
   </delete>
  
-  <insert id="insert" parameterType="com.bawei.cms.domain.Slide">
+  <insert id="insert" parameterType="com.hansujuan.cms.domain.Slide">
     insert into cms_slide
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="title != null">
@@ -72,7 +72,7 @@
     </trim>
   </insert>
   
-  <update id="updateByKey" parameterType="com.bawei.cms.domain.Slide">
+  <update id="updateByKey" parameterType="com.hansujuan.cms.domain.Slide">
     update cms_slide
     <set>
       <if test="title != null">

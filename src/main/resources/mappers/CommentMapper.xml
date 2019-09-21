@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hansujuan.cms.dao.CommentMapper">
+
+
+  <resultMap id="BaseResultMap" type="com.hansujuan.cms.domain.Comment">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="content" property="content" jdbcType="CLOB" typeHandler="org.apache.ibatis.type.ClobTypeHandler"/>
+    <result column="created" property="created" jdbcType="TIMESTAMP"/>
+    
+     <result column="userid" property="user.id" jdbcType="INTEGER"/>
+    <result column="nickname" property="user.nickname" jdbcType="VARCHAR"/>
+    
+     <result column="articleid" property="article.id" jdbcType="INTEGER"/>
+    <result column="articlename" property="article.name" jdbcType="VARCHAR"/>
+    
+  </resultMap>
+  
+  <insert id="addComment" parameterType="com.hansujuan.cms.domain.Comment">
+  		INSERT INTO cms_comment (article_id, user_id, content, created) VALUES (#{article.id},#{user.id},#{content},#{created})
+  </insert>
+  
+  <select id="selectOneCommentByArticleId" parameterType="int" resultMap="BaseResultMap">
+  		SELECT c.*,u.nickname
+  		from cms_article as a,cms_comment as c,cms_user as u 
+		where a.id=c.article_id and c.user_id=u.id and c.article_id=#{0}
+		ORDER BY c.created desc 
+  </select>
+  
+</mapper>

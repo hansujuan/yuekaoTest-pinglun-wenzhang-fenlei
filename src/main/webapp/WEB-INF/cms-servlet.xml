@@ -22,7 +22,7 @@
             http://www.springframework.org/schema/mvc/spring-mvc.xsd
             ">
 	<!-- 第1步：扫描Controller -->
-	<context:component-scan base-package="com.bawei.cms.web"/>
+	<context:component-scan base-package="com.hansujuan.cms.web"/>
 	
 	<!-- 第2步：打开注解驱动 -->
 	<mvc:annotation-driven/>
@@ -33,24 +33,24 @@
 		<property name="suffix" value=".jsp"/>
 	</bean>
 	
-	<!-- 第4步：配置拦截器
-	<mvc:interceptors>
+	<!--  第4步：配置拦截器 -->
+	<!-- <mvc:interceptors>
 		<mvc:interceptor>
-			<mvc:mapping path="/my/**"/>
-			<bean class="com.bawei.cms.web.interceptors.FrontInterceptor"/>
+			  <mvc:mapping path="/my/**"/>  
+			<bean class="com.hansujuan.cms.web.interceptors.FrontInterceptor"/>
 		</mvc:interceptor>
 		<mvc:interceptor>
 			<mvc:mapping path="/admin/**"/>
-			<bean class="com.bawei.cms.web.interceptors.AdminInterceptor"/>
+			<bean class="com.hansujuan.cms.web.interceptors.AdminInterceptor"/>
 		</mvc:interceptor>
-	</mvc:interceptors>
-	 -->
+	</mvc:interceptors> -->
+	 
 	 
 	<!-- 第5步：配置上传 -->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
     	<property name="defaultEncoding" value="UTF-8"/>
     	<!-- Set the maximum allowed size (in bytes) before uploads are refused. -1 indicates no limit (the default). -->
-    	<property name="maxUploadSize" value="1024000"/>
+    	<property name="maxUploadSize" value="10240000"/>
     	<property name="maxInMemorySize" value="1024000"/>
     	<property name="uploadTempDir" value="temp"/>
     	<!-- <property name="resolveLazily" value="true"/> -->

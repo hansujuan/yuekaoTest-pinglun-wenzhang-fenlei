@@ -2,8 +2,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.bawei</groupId>
-	<artifactId>bawei-cms</artifactId>
+	<groupId>com.hansujuan</groupId>
+	<artifactId>hansujuan-cms</artifactId>
 	<version>1.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>CMS内容管理系统</name>
@@ -162,7 +162,13 @@
 			<version>4.3.6.Final</version>
 			<scope>test</scope>
 		</dependency>
-
+		
+		<!-- pageHelper -->
+		<dependency>
+	      <groupId>com.github.pagehelper</groupId>
+	      <artifactId>pagehelper</artifactId>
+	      <version>4.1.6</version>
+	    </dependency>
 
 	</dependencies>
 
@@ -203,7 +209,7 @@
 				<configuration>
 					<scanIntervalSeconds>300</scanIntervalSeconds>
 					<httpConnector>
-						<port>80</port>
+						<port>8081</port>
 					</httpConnector>
 					<webApp>
 						<contextPath>/</contextPath>

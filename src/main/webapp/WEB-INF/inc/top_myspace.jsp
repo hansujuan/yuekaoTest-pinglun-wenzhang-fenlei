@@ -37,7 +37,7 @@
 		          <ul class="dropdown-menu">
 		            <li><a href="/my/home">个人主页</a></li>
 		            <li><a href="/my/profile">个人设置</a></li>
-		            <li><a href="/my/blogs">我的博客</a></li>
+		            <li><a href="/my/blogs">我的文章</a></li>
 		            <li role="separator" class="divider"></li>
 		            <li><a href="/logout">退出</a></li>
 		          </ul>

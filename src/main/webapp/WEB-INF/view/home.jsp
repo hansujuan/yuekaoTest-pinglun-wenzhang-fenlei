@@ -99,11 +99,11 @@
 						<div class="media">
 						  <div class="media-left">
 						    <a href="#">
-						      <img class="media-object" src="${article.picture}" width="120" alt="${article.title }">
+						      <img class="media-object" src="/my/showPicture?picture=${article.picture}" width="120" alt="${article.title }">
 						    </a>
 						  </div>
 						  <div class="media-body">
-						    <h3 class="media-heading article_title"><a href="/article/${article.id}">${article.title }</a></h3>
+						    <h3 class="media-heading article_title"><a href="/blog/${article.id}">${article.title }</a></h3>
 						    <p>${article.summary}</p>
 						    <p class="blog_item_footer">
 						    	<span class="glyphicon glyphicon-user" title="作者"></span>作者：${article.author.nickname}&nbsp;&nbsp; &nbsp;
@@ -119,7 +119,7 @@
 						    <p>${article.summary}</p>
 						    <p class="blog_item_footer">
 						    	<span class="glyphicon glyphicon-user" title="作者"></span>作者：${article.author.nickname}&nbsp;&nbsp;&nbsp;
-						    	<span class="glyphicon glyphicon-time" title="发布时间"></span>发布：&nbsp; <fmt:formatDate value="${article.updated}" pattern="yyyy-MM-dd HH:mm:ss"/>&nbsp;&nbsp;&nbsp;&nbsp; 
+						    	<span class="glyphicon glyphicon-time" title="发布时间"></span>发布：&nbsp; <fmt:formatDate value="${article.created}" pattern="yyyy-MM-dd HH:mm:ss"/>&nbsp;&nbsp;&nbsp;&nbsp; 
 						    	<span class="glyphicon glyphicon-eye-open" title="浏览量"></span>浏览量：&nbsp; ${article.hits}&nbsp;&nbsp;&nbsp;&nbsp;
 						    </p>
 						  </div>

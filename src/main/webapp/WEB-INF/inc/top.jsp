@@ -31,7 +31,7 @@
 		  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
 		    <a class="dropdown-item" href="/my/home">个人主页</a>
 		    <a class="dropdown-item" href="/my/profile">个人设置</a>
-		    <a class="dropdown-item" href="/my/articles">我的文章</a>
+		    <a class="dropdown-item" href="/my/blogs">我的文章</a>
 		    <div class="dropdown-divider"></div>
 		    <a class="dropdown-item" href="/logout">退出</a>
 		  </div>

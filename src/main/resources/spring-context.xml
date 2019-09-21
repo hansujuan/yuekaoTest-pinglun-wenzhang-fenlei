@@ -26,9 +26,9 @@
 	<context:property-placeholder location="classpath:db.properties"/>
 	
 	<!-- 第2步：扫描包，但要排除Web的bean，因为SpringMVC会再扫一次 -->
-	<context:component-scan base-package="com.bawei.cms">
+	<context:component-scan base-package="com.hansujuan.cms">
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
-		<context:exclude-filter type="regex" expression="com\.bawei\.cms\.web\..*"/>
+		<context:exclude-filter type="regex" expression="com\.hansujuan\.cms\.web\..*"/>
 	</context:component-scan>
 	
 	<!-- 第3步：配置数据源，常见的有dbcp、c3p0、阿里数据源、BoneCP -->
@@ -42,16 +42,30 @@
 	<!-- 第4步：配置Mybatis -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"/>
-		<property name="typeAliasesPackage" value="com.bawei.cms.domain" />
+		<property name="typeAliasesPackage" value="com.hansujuan.cms.domain" />
 		<!-- 配置mapper扫描文件的扫描位置 -->
 		<property name="mapperLocations">
 			<value>classpath:mappers/*.xml</value>
 		</property>
+		
+		<property name="plugins">
+			<array>
+				  <bean class="com.github.pagehelper.PageHelper">
+		            <property name="properties">
+		              <value>
+		                dialect=mysql
+		                reasonable=true
+		              </value>
+		            </property>
+		          </bean>
+			</array>
+		</property>
+		
 	</bean>
 	
 	<!-- 第5步：扫描并装配Mapper接口 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.bawei.cms.dao"/>
+		<property name="basePackage" value="com.hansujuan.cms.dao"/>
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
 	</bean>
 	

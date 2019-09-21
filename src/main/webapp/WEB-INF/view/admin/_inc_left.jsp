@@ -3,7 +3,7 @@
      <!-- Sidebar -->
       <ul class="sidebar navbar-nav">
         <li class="nav-item active">
-          <a class="nav-link" href="index.html">
+          <a class="nav-link" href="/admin/index">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>后台首页</span>
           </a>
@@ -25,7 +25,7 @@
           </div>
         </li> -->
         <li class="nav-item">
-          <a class="nav-link" href="/admin/categories">
+          <a class="nav-link" href="/admin/articles">
             <i class="fas fa-fw fa-folder"></i>
             <span>文章管理</span></a>
         </li>
@@ -35,7 +35,7 @@
             <span>用户管理</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/admin/categories">
+          <a class="nav-link" href="/channelCategory/categories">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>分类管理</span></a>
         </li>

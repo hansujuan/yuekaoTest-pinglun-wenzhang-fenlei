@@ -41,6 +41,7 @@
 			<div class="col-md-8">
 				
 				<!-- 文章 -->
+				<input type="hidden" value="${blog.id }" id="id">
 				<h2 align="center">${blog.title}</h2>
 				<div class="text-center">
 					作者：${blog.author.nickname}&nbsp;&nbsp;&nbsp;&nbsp;
@@ -50,13 +51,13 @@
 				<div class="content">
 					${blog.content}
 				</div>
-				<div class="text-right">发布时间：<fmt:formatDate value="${blog.updated}" pattern="yyyy-MM-dd HH:mm:ss"/></div>
-				
+				<div class="text-right">发布时间：<fmt:formatDate value="${blog.created}" pattern="yyyy-MM-dd HH:mm:ss"/></div>
+				 <a href="/blog/${blog.id }?preNum=-1">上一篇</a>
+				<a href="/blog/${blog.id }?preNum=1">下一篇</a> 
 				<hr/>
-				
 				<h4>最新评论</h4>
 				<div class="comments" id="comments">
-					<c:forEach items="${comments}" var="comment">
+					<c:forEach items="${pages.list}" var="comment">
 						<div class="media">
 						  <div class="media-left">
 						    <a href="#">
@@ -64,12 +65,15 @@
 						    </a>
 						  </div>
 						  <div class="media-body">
-						    <h4 class="media-heading">${comment.author.nickname}：</h4>
+						    <h4 class="media-heading">${comment.user.nickname}：</h4>
 						    <p>${comment.content}</p>
-						    <p>评论时间：${comment.diplayTime}</p>
+						    <p>评论时间：
+						    <fmt:formatDate value="${comment.created}" pattern="yyyy-MM-dd HH:mm:ss"/></p>
 						  </div>
 						</div>
 					</c:forEach>
+					<a href="?pageNum=${pages.pageNum-1<1?1:pages.pageNum-1 }">上一页</a>
+					<a href="?pageNum=${pages.pageNum+1>pages.pages?pages.pages:pages.pageNum+1 }">下一页</a>
 				</div>
 				<div>
 					<form id="comment" name="comment" method="post">
@@ -82,16 +86,26 @@
 			<div class="col-md-4">
 				<div class="panel panel-default">
 				  <div class="panel-heading">
-				    <h3 class="panel-title">热门文章</h3>
+				    <h3 class="panel-title">点击率排行榜</h3>
 				  </div>
 				  <div class="panel-body">
 				  	<c:forEach items="${hitBlogs}" var="blog">
-					    <p><a href="/blog/${blog.id}">${blog.title}</a></p>
+					    <p><a href="/blog/${blog.id}">${blog.title}  (${blog.hits })</a></p>
+				  	</c:forEach>
+				  </div>
+				  
+				  <div class="panel-heading">
+				    <h3 class="panel-title">评论排行榜</h3>
+				  </div>
+				  <div class="panel-body">
+				  	<c:forEach items="${commentnumBlogs}" var="blog">
+					    <p><a href="/blog/${blog.id}">${blog.title} (${blog.commentnum })</a></p>
 				  	</c:forEach>
 				  </div>
 				</div>
 				
 			</div>
+				
 		</div>
 	</div>
 	
@@ -125,14 +139,14 @@
 					alert('请填写评论内容');
 					return false;
 				}
-				
+				var id = $("#id").val();
 				$.ajax({
-					url:'/my/comment/' + '${blog.id}',
+					url:'/my/comment/' + id,
 					type:'post',
 					data:$(this).serialize(),
 					error: function(){alert('发表失败');},
 					success:function(data){
-						if(data.status){
+						if(data){
 							var comments = $("#comments").html();
 							$("#comments").html(template.replace("{{comment_content}}", content) + comments);
 							$("#content").val("");
